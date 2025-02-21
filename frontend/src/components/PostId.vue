@@ -1,16 +1,12 @@
 <template>
-
     <div>
-        <div class="detail-title">
-        PostId
+        <!-- namefield의 값은 참조하는 어그리거트의 속성값중 하나로 변경하면 변경한 속성에 맞는 필드명이 표시됩니다. -->
+        <BasePicker v-if="editMode" searchApiPath="posts" searchParameterName="number"  idField="id" nameField="number" path="posts" label="PostId" v-model="value" @selected="pick" :editMode="editMode" />
+        <div v-else style="height:100%">
+            <span>{{ value && value.name ? value.name : '' }}</span>
         </div>
-        <v-col>
-        </v-col>
-
-        <v-card-actions v-if="inList">
-            <slot name="actions"></slot>
-        </v-card-actions>
     </div>
+
 </template>
 
 <script>
@@ -24,7 +20,7 @@ export default {
         BasePicker
     },
     data: () => ({
-        path: '',
+        path: 'posts',
     }),
     props: {
     },

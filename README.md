@@ -49,7 +49,7 @@ mvn spring-boot:run
 ```
 - postmanagement
 ```
- http :8088/posts id="id"number="number"PostId := '{"id": 0}'
+ http :8088/posts id="id"number="number"
 ```
 
 
