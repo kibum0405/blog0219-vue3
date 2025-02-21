@@ -1,9 +1,9 @@
 <template>
     <div>
         <String label="이름" v-model="value.name" :editMode="editMode"/>
-        <String label="방문자이름" v-model="value.visitName" :editMode="editMode"/>
-        <PostId offline label="게시물 ID" v-model="value.postId" :editMode="editMode" @change="change"/>
-        <StringDetailGrid label="방문자이름" offline v-model="value.visitName" :editMode="editMode" @change="change"/>
+        <String label="VisitName" v-model="value.visitName" :editMode="editMode"/>
+        <PostId offline label="postId" v-model="value.postId" :editMode="editMode" @change="change"/>
+        <StringDetailGrid label="VisitName" offline v-model="value.visitName" :editMode="editMode" @change="change"/>
 
         <v-divider class="border-opacity-100 my-divider"></v-divider>
         <v-layout row justify-end>
