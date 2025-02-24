@@ -15,7 +15,7 @@
                 <v-btn @click="addNewRow" @class="contrast-primary-text" small color="primary">
                     <v-icon small style="margin-left: -5px;">mdi-plus</v-icon>등록
                 </v-btn>
-                <v-btn style="margin-left: 5px;" @click="openEditDialog()" class="contrast-primary-text" small color="primary">
+                <v-btn :disabled="!selectedRow" style="margin-left: 5px;" @click="openEditDialog()" class="contrast-primary-text" small color="primary">
                     <v-icon small>mdi-pencil</v-icon>수정
                 </v-btn>
             </div>
@@ -33,7 +33,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(val, idx) in value" :key="val" @click="changeSelectedRow(val)" :style="val === selectedRow ? 'background-color: #f0f3ff;':''">
+                        <tr v-for="(val, idx) in value" 
+                            @click="changeSelectedRow(val)"
+                            :key="val" 
+                            :style="val === selectedRow ? 'background-color: rgb(var(--v-theme-primary), 0.2) !important;':''"
+                        >
                             <td class="font-semibold">{{ idx + 1 }}</td>
                             <td class="whitespace-nowrap" label="이름">{{ val.name }}</td>
                             <td class="whitespace-nowrap" label="방문자이름">
