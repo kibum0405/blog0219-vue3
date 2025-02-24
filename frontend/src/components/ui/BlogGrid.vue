@@ -28,8 +28,7 @@
                         <tr>
                         <th>Id</th>
                         <th>이름</th>
-                        <th>VisitName</th>
-                        <th>postId</th>
+                        <th>방문자이름</th>
                         <th>게시물</th>
                         </tr>
                     </thead>
@@ -37,7 +36,11 @@
                         <tr v-for="(val, idx) in value" :key="val" @click="changeSelectedRow(val)" :style="val === selectedRow ? 'background-color: #f0f3ff;':''">
                             <td class="font-semibold">{{ idx + 1 }}</td>
                             <td class="whitespace-nowrap" label="이름">{{ val.name }}</td>
-                            <td class="whitespace-nowrap" label="VisitName">{{ val.visitName }}</td>
+                            <td class="whitespace-nowrap" label="방문자이름">
+                                <span v-for="(name, index) in val.visitName" :key="index">
+                                    {{ name }}<br>
+                                </span>
+                            </td>
                             <td class="whitespace-nowrap" label="게시물">
                                 <PostId :editMode="editMode" v-model="val.postId"></PostId>
                             </td>
@@ -49,7 +52,7 @@
                     </tbody>
                 </v-table>
             </div>
-            <StringDetailGrid style="margin-top: 20px;" label="VisitName" offline v-if="selectedRow" v-model="selectedRow.visitName" :selectedRow="selectedRow"/>
+            <StringDetailGrid style="margin-top: 20px;" label="방문자이름" offline v-if="selectedRow" v-model="selectedRow.visitName" :selectedRow="selectedRow"/>
         </div>
         <v-col>
             <v-dialog
@@ -60,7 +63,7 @@
                 <v-card>
                     <v-toolbar
                         color="primary"
-                        class="elevation-0"
+                        class="elevation-0 pa-4"
                         height="50px"
                     >
                         <div style="color:white; font-size:17px; font-weight:700;">Blog 등록</div>
@@ -90,7 +93,7 @@
                 <v-card>
                     <v-toolbar
                         color="primary"
-                        class="elevation-0"
+                        class="elevation-0 pa-4"
                         height="50px"
                     >
                         <div style="color:white; font-size:17px; font-weight:700;">Blog 수정</div>
@@ -104,9 +107,8 @@
                     <v-card-text>
                         <div>
                             <String label="이름" v-model="selectedRow.name" :editMode="true"/>
-                            <String label="VisitName" v-model="selectedRow.visitName" :editMode="true"/>
-                            <PostId offline label="postId" v-model="selectedRow.postId" :editMode="true"/>
-                            <StringDetailGrid label="VisitName" offline v-model="selectedRow.visitName" :editMode="true"/>
+                            <String label="방문자이름" v-model="selectedRow.visitName" :editMode="true"/>
+                            <StringDetailGrid label="방문자이름" offline v-model="selectedRow.visitName" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>
                                 <v-btn
