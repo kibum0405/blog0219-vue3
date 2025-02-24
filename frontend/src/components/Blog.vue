@@ -3,21 +3,19 @@
         <String label="이름" v-model="value.name" :editMode="editMode"/>
         <v-divider class="border-opacity-50 my-divider my-2"></v-divider>
         <div variant="outlined" class="my-2">
-            <String label="VisitName" v-model="visitNameInput" :editMode="editMode" @keydown.enter="addVisitName"/>
+            <String label="방문자이름" v-model="visitNameInput" :editMode="editMode" @keydown.enter="addVisitNameList"/>
             <v-card v-if="value.visitName.length > 0" variant="outlined" class="pa-4 mt-2">
-                <v-card-sub-title>VisitName List</v-card-sub-title>
+                <v-card-sub-title>방문자이름 List</v-card-sub-title>
                 <li v-for="(name, index) in value.visitName" :key="index">{{ name }}</li>
             </v-card>
             <v-row class="ma-0 pa-0 mt-2">
                 <v-spacer></v-spacer>
-                <v-btn @click="addVisitName">VisitName 추가</v-btn>
+                <v-btn @click="addVisitNameList">VisitName 추가</v-btn>
             </v-row>
             <StringDetailGrid label="VisitName" offline v-model="value.visitName" :editMode="editMode" @change="change"/>
         </div>
         <v-divider class="border-opacity-50 my-divider my-2"></v-divider>
-        <PostId offline label="postId" v-model="value.postId" :editMode="editMode" @change="change"/>
-        
-
+        <PostId offline label="게시물 ID" v-model="value.postId" :editMode="editMode" @change="change"/>
         <v-divider class="border-opacity-50 my-divider my-2"></v-divider>
         <v-row class="ma-0 pa-0">
             <v-spacer></v-spacer>
